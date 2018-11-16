@@ -10,7 +10,7 @@ public class Solver {
     private Stack<Double> operands;
     private String equation;
     private StringTokenizer tokens;
-    double variableValue;
+    private double valueOfX;
     
     /*
      * Constructors
@@ -27,14 +27,14 @@ public class Solver {
         operands = new Stack<>();
     }
 
-    /* public Solver (String pEquation, double pVariableValue) {
+    public Solver (String pEquation, double pVariableValue) {
         equation = pEquation;
         tokens = new StringTokenizer(pEquation);
         operators = new Stack<>(); // store + - / * ( )
         operands = new Stack<>(); // store numbers
-        variableValue = pVariableValue;
+        valueOfX = pVariableValue;
 
-    } */
+    }
 
 
     /*
@@ -59,7 +59,7 @@ public class Solver {
         return finalEval(operands.pop());
     }
 
-    public double solve (double value) {
+    public double solve (double pX) {
         String currentToken;
         while (tokens.hasMoreTokens()) {
             currentToken = tokens.nextToken();
@@ -67,7 +67,7 @@ public class Solver {
                 Double d = Double.parseDouble(currentToken);
                 operands.push(d);
             } else if (currentToken.equals("x")) {
-                operands.push(value);
+                operands.push(pX);
             } else {
                 if (operators.size() != 0 && checkOperatorRules(currentToken)) {
                     topEval();

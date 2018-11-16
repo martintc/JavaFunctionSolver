@@ -11,7 +11,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter an equation to solve: ");
         String inEquation = in.nextLine();
-        FunctionSolver solveIt = new FunctionSolver(inEquation, 0, 10, 1);
+        FunctionSolver solveIt = new FunctionSolver(inEquation, 1, 10, 1);
         // FunctionSolver solveIt = new FunctionSolver(inEquation);
         String answer = solveIt.solveEachFunction();
         System.out.println("The answer: " + answer);

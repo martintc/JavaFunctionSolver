@@ -19,7 +19,7 @@ public class FunctionSolver {
     }
 
     public FunctionSolver (String pInputEquation, double pValue, double pMaxValue, double pIncrement) {
-        solver = new Solver(pInputEquation);
+        // solver = new Solver(pInputEquation, pValue);
         inputEquation = pInputEquation;
         value = pValue;
         maxValue = pMaxValue;
@@ -42,9 +42,11 @@ public class FunctionSolver {
 
         if (checkForVariable()) {
             while (value <= maxValue) {
+                Solver solver = new Solver(inputEquation, value);
                 solutions.add(solver.solve(value));
                 value += increment;
             }
+            System.out.println(solutions.toString());
             return getFunctionTable(solutions);
         } else {
             return Double.toString(solver.solve());
@@ -92,7 +94,7 @@ public class FunctionSolver {
     private String getFunctionTable(ArrayList<Double> pSolutions) {
         String output = "";
         for (Double d : pSolutions) {
-            output = d + "\n";
+            output = output + d + "\n";
         }
         return output;
     }
